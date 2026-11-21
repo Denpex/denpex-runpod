@@ -1,0 +1,45 @@
+{
+  "tests": [
+    {
+      "name": "cuda_oom_offline_diagnosis",
+      "input": {
+        "action": "diagnose",
+        "log": "RuntimeError: CUDA out of memory. Tried to allocate 2.00 GiB. GPU 0 has a total capacity of 23.69 GiB of which 120.00 MiB is free."
+      },
+      "timeout": 30000
+    },
+    {
+      "name": "xid_79_hardware_diagnosis",
+      "input": {
+        "action": "diagnose",
+        "log": "NVRM: Xid (PCI:0000:1b:00): 79, pid=1234, GPU has fallen off the bus."
+      },
+      "timeout": 30000
+    },
+    {
+      "name": "health_check",
+      "input": {
+        "action": "health"
+      },
+      "timeout": 15000
+    }
+  ],
+  "config": {
+    "gpuTypeId": "NVIDIA GeForce RTX 4090",
+    "gpuCount": 1,
+    "env": [
+      {
+        "key": "DENPEX_OFFLINE_ONLY",
+        "value": "1"
+      }
+    ],
+    "allowedCudaVersions": [
+      "12.8",
+      "12.7",
+      "12.6",
+      "12.5",
+      "12.4",
+      "12.3"
+    ]
+  }
+}

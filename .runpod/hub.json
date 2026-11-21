@@ -1,0 +1,44 @@
+{
+  "title": "Denpex GPU Crash & NCCL Diagnostics",
+  "description": "Diagnose CUDA OOM, NCCL timeouts, vLLM KV-cache crashes, and NVIDIA Xid hardware faults locally with zero egress or optional Denpex Cloud analysis.",
+  "type": "serverless",
+  "category": "language",
+  "iconUrl": "https://denpex.com/icon.png",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 20,
+    "gpuCount": 1,
+    "allowedCudaVersions": [
+      "12.8",
+      "12.7",
+      "12.6",
+      "12.5",
+      "12.4",
+      "12.3",
+      "12.2",
+      "12.1"
+    ],
+    "env": [
+      {
+        "key": "DENPEX_API_KEY",
+        "input": {
+          "name": "Denpex API Key (Optional)",
+          "type": "string",
+          "description": "Optional Denpex API key (dpx_...) for cloud deep diagnosis. Leave blank for zero-egress local diagnosis. Start a 30-day free Team trial at https://denpex.com/pricing?utm_source=runpod_hub",
+          "default": "",
+          "advanced": false
+        }
+      },
+      {
+        "key": "DENPEX_OFFLINE_ONLY",
+        "input": {
+          "name": "Force Offline Zero-Egress Mode",
+          "type": "string",
+          "description": "Set to 1 to disable all outbound API calls and run strictly offline.",
+          "default": "0",
+          "advanced": true
+        }
+      }
+    ]
+  }
+}
