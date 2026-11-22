@@ -94,8 +94,10 @@ class HandlerTests(unittest.TestCase):
             tests = json.load(fh)
         self.assertEqual(hub["type"], "serverless")
         self.assertIn("config", hub)
+        self.assertEqual(hub["config"]["runsOn"], "CPU")
+        self.assertEqual(hub["config"]["cpuFlavor"], "cpu3g-2-8")
         self.assertGreaterEqual(len(tests["tests"]), 3)
-        self.assertEqual(tests["config"]["gpuCount"], 1)
+        self.assertEqual(tests["config"]["cpuFlavor"], "cpu3g-2-8")
         for tc in tests["tests"]:
             res = handler.handler({"input": tc["input"]})
             self.assertEqual(res["status"], "ok", f"Test case {tc['name']} failed: {res}")

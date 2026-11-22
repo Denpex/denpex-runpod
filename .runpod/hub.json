@@ -5,19 +5,9 @@
   "category": "language",
   "iconUrl": "https://denpex.com/icon.png",
   "config": {
-    "runsOn": "GPU",
+    "runsOn": "CPU",
+    "cpuFlavor": "cpu3g-2-8",
     "containerDiskInGb": 20,
-    "gpuCount": 1,
-    "allowedCudaVersions": [
-      "12.8",
-      "12.7",
-      "12.6",
-      "12.5",
-      "12.4",
-      "12.3",
-      "12.2",
-      "12.1"
-    ],
     "env": [
       {
         "key": "DENPEX_API_KEY",
